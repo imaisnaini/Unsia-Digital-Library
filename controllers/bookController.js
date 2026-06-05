@@ -25,20 +25,25 @@ let books = [
 
 // 3. a. GET /api/books : untuk menampilkan seluruh daftar buku dalam format array JSON
 const getAllBooks = (req, res) => {
-    res.status(200).json({
-        success: true,
-        data: books,
-        message: "Daftar buku berhasil diambil"
-    });
+    try {
+        // 4. b. Success response
+        res.status(200).json({
+            success: true,
+            data: books,
+            message: "Daftar buku berhasil diambil"
+        });
+    } catch (error) {
+        next(error); // Pass error to global error handler
+    }
 };
 
 // 3. b. POST /api/books : untuk menambahkan data buku baru (input melalui req.body)
 const addNewBook = (req, res) => {
     const { title, author, year } = req.body;
 
-    // 4. b. Error handling
+    // 4. b. Error handling - Bad Request
     if (!title || !author || !year) {
-        return res.status(400).json({
+        return res.status(40).json({
             success: false,
             message: "Data buku tidak lengkap. Pastikan title, author, dan year diisi."
         });
@@ -52,11 +57,15 @@ const addNewBook = (req, res) => {
         year
     };
     books.push(newBook);
-    res.status(201).json({
-        success: true,
-        data: newBook,
-        message: "Buku berhasil ditambahkan"
-    });
+    try {
+        res.status(201).json({
+            success: true,
+            data: newBook,
+            message: "Buku berhasil ditambahkan"
+        });
+    } catch (error) {
+        next(error); // Pass error to global error handler  
+    }
 };
 
 // 3. c. PUT /api/books/:id : untuk memperbarui informasi buku berdasarkan ID tertentu
@@ -64,7 +73,7 @@ const updateBook = (req, res) => {
     const id = parseInt(req.params.id);
     const { title, author, year } = req.body;
 
-    // 4. b. Error handling
+    // 4. b. Error handling - Not Found
     const book = books.find(b => b.id === id);
     if (!book) {
         return res.status(404).json({
@@ -77,11 +86,15 @@ const updateBook = (req, res) => {
     book.title = title || book.title;
     book.author = author || book.author;
     book.year = year || book.year;
-    res.status(200).json({
-        success: true,
-        data: book,
-        message: "Buku berhasil diperbarui"
-    });
+    try {
+        res.status(200).json({
+            success: true,
+            data: book,
+            message: "Buku berhasil diperbarui"
+        });
+    } catch (error) {
+        next(error); // Pass error to global error handler
+    }
 };
 
 // 3. d. DELETE /api/books/:id : untuk menghapus data buku dari sistem
@@ -99,11 +112,15 @@ const deleteBook = (req, res) => {
 
     // Hapus buku dari array
     const deletedBook = books.splice(index, 1);
-    res.status(200).json({
-        success: true,
-        data: deletedBook[0],
-        message: "Buku berhasil dihapus"
-    });
+    try {
+        res.status(200).json({
+            success: true,
+            data: deletedBook[0],
+            message: "Buku berhasil dihapus"
+        });
+    } catch (error) {
+        next(error); // Pass error to global error handler
+    }
 };
 
 module.exports = {
