@@ -1,15 +1,17 @@
-/*
-    3. Implementasi Routing dan RESTful API
-*/
-
 const express = require('express');
 const router = express.Router();
+const { getBooks, createBook, updateBook, deleteBook } = require('../controllers/bookController');
+const { protect } = require('../middleware/auth');
 
-const { getAllBooks, addNewBook, updateBook, deleteBook } = require('../controllers/bookController');
+// Proteksi seluruh endpoint dengan JWT Middleware
+router.use(protect);
 
-router.get('/', getAllBooks);
-router.post('/', addNewBook);
-router.put('/:id', updateBook);
-router.delete('/:id', deleteBook);
+router.route('/')
+  .get(getBooks)
+  .post(createBook);
+
+router.route('/:id')
+  .put(updateBook)
+  .delete(deleteBook);
 
 module.exports = router;
