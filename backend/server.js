@@ -4,13 +4,23 @@
 #
 */
 
-const express = require('express');
-const authRoutes = require('./routes/authRoutes');
-const bookRoutes = require('./routes/bookRoutes');
+const express = require('express');const dotenv = require('dotenv');
+const cors = require('cors');
+const helmet = require('helmet');
+const connectDB = require('./config/db');
+
+// Load environment variables
+dotenv.config();
+
+// Connect to MongoDB
+connectDB();
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
+// Security & Parsing Middlewares
+app.use(helmet());
+app.use(cors());
 app.use(express.json());
 
 app.get('/', (req, res) => {
