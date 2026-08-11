@@ -42,6 +42,7 @@ Aplikasi ini dirancang untuk memfasilitasi pengelolaan koleksi buku, data anggot
 
 ## 📂 Struktur Proyek (Project Tree)
 
+```text
 UNSIA-DIGITAL-LIBRARY/
 ├── backend/
 │   ├── config/
@@ -92,6 +93,7 @@ UNSIA-DIGITAL-LIBRARY/
 │   ├── package.json
 │   └── vite.config.js
 └── README.md
+```
 
 ---
 
@@ -99,7 +101,7 @@ UNSIA-DIGITAL-LIBRARY/
 
 1. **Autentikasi & Keamanan Pengguna:**
    * Registrasi dan Login akun petugas/admin.
-   * Enkripsi kata sandi menggunakan bcryptjs.
+   * Enkripsi kata sandi menggunakan `bcryptjs`.
    * Akses terproteksi menggunakan JSON Web Token (JWT).
 2. **Dashboard Interactive:**
    * Ringkasan statistik (Total Buku, Total Member, Sedang Dipinjam, dan Dikembalikan).
@@ -122,36 +124,52 @@ UNSIA-DIGITAL-LIBRARY/
 ## 🛠️ Instalasi dan Menjalankan Project
 
 ### 1. Clone Repository
-git clone https://github.com/imaisnaini/Unsia-Digital-Library.git
+```bash
+git clone [https://github.com/imaisnaini/Unsia-Digital-Library.git](https://github.com/imaisnaini/Unsia-Digital-Library.git)
 cd Unsia-Digital-Library
+```
 
 ---
 
 ### 2. Setup Backend
 
 1. Masuk ke folder backend:
+   ```bash
    cd backend
+   ```
 2. Install dependency:
+   ```bash
    npm install
-3. Buat file .env berdasarkan salinan .env.example:
+   ```
+3. Buat file `.env` berdasarkan salinan `.env.example`:
+   ```env
    PORT=5000
    MONGO_URI=mongodb+srv://<username>:<password>@cluster.mongodb.net/unsia_library
    JWT_SECRET=rahasia_jwt_unsia
+   ```
 4. Jalankan server backend:
+   ```bash
    npm run dev
-   (Server backend akan berjalan di: http://localhost:5000)
+   ```
+   *(Server backend akan berjalan di: `http://localhost:5000`)*
 
 ---
 
 ### 3. Setup Frontend
 
 1. Buka terminal baru dan masuk ke folder frontend:
+   ```bash
    cd frontend
+   ```
 2. Install dependency:
+   ```bash
    npm install
+   ```
 3. Jalankan aplikasi frontend:
+   ```bash
    npm run dev
-   (Aplikasi frontend akan berjalan di: http://localhost:5173)
+   ```
+   *(Aplikasi frontend akan berjalan di: `http://localhost:5173`)*
 
 ---
 
