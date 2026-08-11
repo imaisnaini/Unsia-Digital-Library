@@ -67,11 +67,11 @@ exports.returnLoan = async (req, res, next) => {
     const loan = await Loan.findById(req.params.id);
 
     if (!loan) return res.status(404).json({ success: false, message: 'Peminjaman tidak ditemukan' });
-    if (loan.status === 'DIKEMBALIKAN' || loan.status === 'returned') {
+    if (loan.status === 'returned' || loan.status === 'returned') {
       return res.status(400).json({ success: false, message: 'Buku sudah dikembalikan' });
     }
 
-    loan.status = 'DIKEMBALIKAN';
+    loan.status = 'returned';
     loan.returnDate = Date.now();
     await loan.save();
 

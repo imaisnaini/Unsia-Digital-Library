@@ -77,7 +77,6 @@ const Books = () => {
 
   return (
     <div style={styles.container}>
-      <Navbar />
       <div style={styles.content}>
         <div style={styles.header}>
           <h1 style={{ color: '#fff' }}>Manajemen Buku</h1>

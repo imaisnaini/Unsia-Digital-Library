@@ -5,55 +5,69 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Books from './pages/Books';
 import Member from './pages/Members';
-import Loan from './pages/Loans';
+import Loans from './pages/Loans';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
-import Loans from './pages/Loans';
+import MainLayout from './components/MainLayout'; // 1. Import MainLayout
 
 function App() {
   return (
     <AuthProvider>
       <Router>
         <div style={{ display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#0a192f' }}>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/books"
-            element={
-              <ProtectedRoute>
-                <Books />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/members"
-            element={
-              <ProtectedRoute>
-                <Member />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="/loans"
-            element={
-              <ProtectedRoute>
-                <Loans />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
-        </Routes>
+          <Routes>
+            {/* Halaman tanpa Navbar */}
+            <Route path="/login" element={<Login />} />
+            <Route path="/register" element={<Register />} />
+
+            {/* Halaman Terproteksi dengan Navbar */}
+            <Route
+              path="/dashboard"
+              element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <Dashboard />
+                  </MainLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/books"
+              element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <Books />
+                  </MainLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/members"
+              element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <Member />
+                  </MainLayout>
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/loans"
+              element={
+                <ProtectedRoute>
+                  <MainLayout>
+                    <Loans />
+                  </MainLayout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          </Routes>
+
+          {/* Footer tetap tampil global di semua halaman */}
+          <Footer />
         </div>
-        <Footer/>
       </Router>
     </AuthProvider>
   );

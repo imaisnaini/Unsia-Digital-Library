@@ -58,7 +58,6 @@ const Members = () => {
 
   return (
     <div style={styles.container}>
-      <Navbar />
       <div style={styles.content}>
         <h1 style={styles.title}>Kelola Member Perpustakaan</h1>
 

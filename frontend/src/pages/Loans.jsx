@@ -61,7 +61,6 @@ const Loans = () => {
 
   return (
     <div style={styles.container}>
-      <Navbar />
       <div style={styles.content}>
         <h1 style={{ color: '#e6f1ff', marginBottom: '20px' }}>Transaksi Peminjaman</h1>
 

@@ -11,6 +11,7 @@ exports.getSummary = async (req, res, next) => {
     const totalMembers = await Member.countDocuments();
     const totalLoans = await Loan.countDocuments();
     const activeLoans = await Loan.countDocuments({ status: 'borrowed' });
+    const returnedLoans = await Loan.countDocuments({ status: 'returned'});
 
     // Data agregasi grafik: Jumlah buku per kategori
     const categoryStats = await Book.aggregate([
@@ -23,7 +24,8 @@ exports.getSummary = async (req, res, next) => {
         totalBooks,
         totalMembers,
         totalLoans,
-        activeLoans
+        activeLoans,
+        returnedLoans
       },
       categoryStats
     });
