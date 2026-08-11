@@ -8,7 +8,8 @@ import Member from './pages/Members';
 import Loans from './pages/Loans';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
-import MainLayout from './components/MainLayout'; // 1. Import MainLayout
+import MainLayout from './components/MainLayout'; 
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
             />
 
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
+            <Route path="*" element={<NotFound/>}/>
           </Routes>
 
           {/* Footer tetap tampil global di semua halaman */}
