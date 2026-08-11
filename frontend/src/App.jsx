@@ -4,8 +4,11 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Books from './pages/Books';
+import Member from './pages/Members';
+import Loan from './pages/Loans';
 import ProtectedRoute from './components/ProtectedRoute';
 import Footer from './components/Footer';
+import Loans from './pages/Loans';
 
 function App() {
   return (
@@ -28,6 +31,22 @@ function App() {
             element={
               <ProtectedRoute>
                 <Books />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/members"
+            element={
+              <ProtectedRoute>
+                <Member />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/loans"
+            element={
+              <ProtectedRoute>
+                <Loans />
               </ProtectedRoute>
             }
           />

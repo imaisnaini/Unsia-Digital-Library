@@ -32,6 +32,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/books', require('./routes/bookRoutes'));
 app.use('/api/loans', require('./routes/loanRoutes'));
 app.use('/api/dashboard', require('./routes/dashboardRoutes'));
+app.use('/api/members', require('./routes/memberRoutes'));
 
 // Global error handling 
 app.use((err, req, res, next) => {
