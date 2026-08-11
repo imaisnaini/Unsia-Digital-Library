@@ -3,7 +3,7 @@ const User = require('../models/User');
 
 async function protect(req, res, next) {
     const authorization = req.headers.authorization || '';
-    if (!authorization.startsWith('Bearer')) {
+    if (!authorization.startsWith('Bearer ')) {
         return res.status(401).json({
             success: false,
             message: 'Akses ditolak. Sertakan Bearer token yang valid.'
@@ -24,7 +24,9 @@ async function protect(req, res, next) {
             algorithms: ['HS256'],
         });
 
-        const user = await User.findById(decoded.sub);
+        // Mendukung decoded.id ATAU decoded.sub agar kompatibel
+        const userId = decoded.id || decoded.sub;
+        const user = await User.findById(userId);
 
         if (!user) {
             return res.status(401).json({
@@ -34,7 +36,7 @@ async function protect(req, res, next) {
         }
 
         req.user = {
-            id: user.id,
+            id: user._id,
             name: user.name,
             email: user.email,
             role: user.role
@@ -42,12 +44,13 @@ async function protect(req, res, next) {
 
         return next();
     } catch (error) {
+        // Perbaikan typo TokenExpiredError
         const message = 
-            error.name === 'TokenExpiredrror'
+            error.name === 'TokenExpiredError'
                 ? 'Token sudah kadaluwarsa. Silahkan login kembali.'
                 : 'Token tidak valid atau sudah dimodifikasi.';
             
-        return res.status(401).json({ success: false, message});
+        return res.status(401).json({ success: false, message });
     }
 }
 

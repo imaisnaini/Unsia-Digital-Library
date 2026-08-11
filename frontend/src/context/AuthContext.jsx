@@ -7,27 +7,34 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  // Inisialisasi status login dari localStorage saat aplikasi pertama dimuat
   useEffect(() => {
-    const checkLoggedIn = async () => {
-      const token = localStorage.getItem('token');
-      if (token) {
-        try {
-          const res = await API.get('/auth/me');
-          setUser(res.data.data);
-        } catch (error) {
-          localStorage.removeItem('token');
-          setUser(null);
-        }
+    const savedToken = localStorage.getItem('token');
+    const savedUser = localStorage.getItem('user');
+
+    if (savedToken && savedUser) {
+      try {
+        setUser(JSON.parse(savedUser));
+      } catch (e) {
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
       }
-      setLoading(false);
-    };
-    checkLoggedIn();
+    }
+    setLoading(false);
   }, []);
 
   const login = async (email, password) => {
     const res = await API.post('/auth/login', { email, password });
-    localStorage.setItem('token', res.data.token);
-    setUser(res.data.user);
+    
+    // Sesuaikan properti response dari backend kamu
+    const token = res.data.token;
+    const userData = res.data.user || { email };
+
+    // Simpan ke localStorage
+    localStorage.setItem('token', token);
+    localStorage.setItem('user', JSON.stringify(userData));
+    
+    setUser(userData);
     return res.data;
   };
 
@@ -38,6 +45,7 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('user');
     setUser(null);
   };
 
