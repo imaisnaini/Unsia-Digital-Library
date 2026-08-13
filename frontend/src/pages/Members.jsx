@@ -175,7 +175,7 @@ const styles = {
   trHeader: { backgroundColor: '#233554', color: '#64ffda', textAlign: 'left' },
   th: { padding: '12px 16px', fontSize: '14px' },
   trBody: { borderBottom: '1px solid #233554', color: '#e6f1ff' },
-  td: { padding: '12px 16px', fontSize: '14px' },
+  td: { padding: '12px 16px', fontSize: '14px', textAlign: 'left' },
   btnEdit: { backgroundColor: '#ffc107', color: '#000', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', marginRight: '8px' },
   btnDelete: { backgroundColor: '#dc3545', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer' },
 };

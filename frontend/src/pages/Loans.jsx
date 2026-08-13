@@ -175,7 +175,7 @@ const styles = {
   trHeader: { backgroundColor: '#233554', color: '#64ffda', textAlign: 'left' },
   th: { padding: '12px 16px', fontSize: '14px' },
   trBody: { borderBottom: '1px solid #233554', color: '#e6f1ff' },
-  td: { padding: '12px 16px', fontSize: '14px' },
+  td: { padding: '12px 16px', fontSize: '14px', textAlign: 'left' },
   statusBadgeActive: { backgroundColor: '#ffc107', color: '#000', padding: '4px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' },
   statusBadgeDone: { backgroundColor: '#28a745', color: '#fff', padding: '4px 8px', borderRadius: '4px', fontSize: '12px', fontWeight: 'bold' },
   returnBtn: { backgroundColor: '#28a745', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer' },

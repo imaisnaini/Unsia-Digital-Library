@@ -189,19 +189,19 @@ const Books = () => {
     </div>
   );
 };
-
 const styles = {
-  container: { backgroundColor: '#0a192f', minHeight: '100vh', fontFamily: "'Segoe UI', sans-serif" },
-  content: { padding: '30px', maxWidth: '1100px', margin: '0 auto' },
-  header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '25px' },
+  container: { display: 'flex', flexDirection: 'column', minHeight: '100vh', backgroundColor: '#0a192f', fontFamily: "'Segoe UI', sans-serif" },
+  content: { flex: 1, padding: '20px 30px', maxWidth: '1100px', margin: '0 auto', width: '100%', boxSizing: 'border-box' },
+  header: { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' },
   addBtn: { backgroundColor: '#64ffda', color: '#0a192f', border: 'none', padding: '10px 20px', borderRadius: '6px', fontWeight: 'bold', cursor: 'pointer' },
   table: { width: '100%', borderCollapse: 'collapse', backgroundColor: '#112240', borderRadius: '8px', overflow: 'hidden' },
   trHeader: { backgroundColor: '#233554', color: '#64ffda', textAlign: 'left' },
   th: { padding: '12px 16px', fontSize: '14px' },
   trBody: { borderBottom: '1px solid #233554', color: '#e6f1ff' },
-  td: { padding: '12px 16px', fontSize: '14px' },
+  td: { padding: '12px 16px', fontSize: '14px', textAlign: 'left' },
   editBtn: { backgroundColor: '#ffc107', color: '#000', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer', marginRight: '8px' },
   deleteBtn: { backgroundColor: '#ff4d4f', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer' },
+  footer: { backgroundColor: '#060d1a', color: '#8892b0', textAlign: 'center', padding: '12px 20px', fontSize: '13px', borderTop: '1px solid #112240' },
   
   // Grey Navy Modal Style
   modalOverlay: { position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, backgroundColor: 'rgba(0,0,0,0.7)', display: 'flex', justifyContent: 'center', alignItems: 'center' },
