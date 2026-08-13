@@ -25,7 +25,7 @@ async function protect(req, res, next) {
         });
 
         // Mendukung decoded.id ATAU decoded.sub agar kompatibel
-        const userId = decoded.id || decoded.sub;
+        const userId = decoded.user?.id || decoded.id || decoded.sub;
         const user = await User.findById(userId);
 
         if (!user) {
