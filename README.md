@@ -13,7 +13,7 @@ Aplikasi ini telah di-deploy penuh ke lingkungan *production* dan siap diuji sec
 ### 🔑 Akun Demo Pengujian (Test Credentials)
 Untuk memudahkan proses pengujian aplikasi tanpa perlu mendaftar akun baru:
 * **Email:** `admin@unsia.ac.id` (atau buat akun baru via halaman Register)
-* **Password:** `password123`
+* **Password:** `unsia2026`
 
 ---
 
