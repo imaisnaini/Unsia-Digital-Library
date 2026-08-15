@@ -30,7 +30,7 @@ const register = async (req, res) => {
       name,
       email,
       password: hashedPassword,
-      role: role || 'petugas'
+      role: role
     });
 
     await user.save();
